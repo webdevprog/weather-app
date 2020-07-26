@@ -1,0 +1,17 @@
+.App {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: url(assets/images/bgmain.jpg) no-repeat center / cover;
+    background-attachment: fixed;
+    filter: blur(15px);
+    transform: scale(1.1); 
+  }
+}

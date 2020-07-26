@@ -1,6 +1,6 @@
 import React from 'react';
-import './App.css';
-import { Container, Row, Col } from 'react-bootstrap';
+import './App.scss';
+import { Container } from 'react-bootstrap';
 import CardWeather from './components/CardWeather/CardWeather';
 
 function App() {
