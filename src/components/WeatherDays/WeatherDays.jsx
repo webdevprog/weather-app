@@ -25,16 +25,30 @@ const WeatherDays = (props) => {
                                 <div className="weather-day__date">{item[index].date}</div>
                             </Col>
                             <Col lg="12">
-                                <Swiper spaceBetween={20} slidesPerView={4} className="weather-days-slider">
+                                <Swiper
+                                    spaceBetween={20}
+                                    breakpoints={{
+                                        560: { slidesPerView: 2 },
+                                        768: { slidesPerView: 3 },
+                                        992: { slidesPerView: 4 },
+                                    }}
+                                    navigation={{
+                                        nextEl: '.swiper-button-next',
+                                        prevEl: '.swiper-button-prev',
+                                    }}
+                                    slidesPerView={1}
+                                    className="weather-days-slider">
                                     {item.map((weather, index) => (
                                         <SwiperSlide className="weather-days-slider__slide"><WeatherCard item={weather} key={index} /></SwiperSlide>
                                     ))}
+                                <div class="swiper-button-prev"></div>
+                                <div class="swiper-button-next"></div>
                                 </Swiper>
                             </Col>
                         </Row>))
                 }
             </Col>
-        </Row>
+        </Row >
     );
 }
 

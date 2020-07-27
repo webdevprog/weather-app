@@ -12,14 +12,14 @@ class WeatherDaysConatainer extends React.Component {
         e.preventDefault();
         this.props.toggleFetching(false);
         this.props.setPlace(this.props.searchPlace);
-        axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${this.props.searchPlace}&lang=ru&units=metric&APPID=1204ec86d11d969f5c14a0f8ec54ab6b`)
+        axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${encodeURIComponent(this.props.searchPlace)}&lang=ru&units=metric&APPID=1204ec86d11d969f5c14a0f8ec54ab6b`)
             .then(response => {
                 this.props.toggleFetching(true);
                 this.props.setWeather(response.data.list);
             }).catch(() => {
                 this.props.toggleFetching(true);
                 this.props.setWeather([]);
-            })
+            });
     }
 
     onChange = (e) => {
@@ -34,6 +34,7 @@ class WeatherDaysConatainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
+        weathers: state.weatherPage.weathers,
         searchPlace: state.weatherPage.searchPlace,
         place: state.weatherPage.place,
         isFetching: state.weatherPage.isFetching

@@ -15,14 +15,14 @@ const weatherReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_WEATHER: {
             let timeNow = Math.floor(Date.now() / 1000) + (3 * 60 * 60),
-                timeTomorrow = timeNow + (2 * 24 * 60 * 60),
+                timeTomorrow = timeNow + (5 * 24 * 60 * 60),
                 filterDataByTime = action.weatherItems.filter(item =>
                     item.dt >= timeNow && item.dt <= timeTomorrow && (/.+/gi).test(item.dt_txt)
                 ),
                 dataByDays = [],
                 arrDays = [];
 
-            filterDataByTime.forEach((item, index, items) => {
+            action.weatherItems.forEach((item, index, items) => {
                 const formatDate = /(\d{4})-(\d{1,2})-(\d{1,2})(.+)/gi;
 
                 let nextItem,
@@ -59,13 +59,13 @@ const weatherReducer = (state = initialState, action) => {
                 searchPlace: action.searchPlace
             };
         }
-        case SET_PLACE : {
+        case SET_PLACE: {
             return {
                 ...state,
                 place: action.place
             };
         }
-        case TOGGLE_FETCHING : {
+        case TOGGLE_FETCHING: {
             return {
                 ...state,
                 isFetching: !action.fetching
