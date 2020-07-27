@@ -1,7 +1,12 @@
 const SET_WEATHER = 'SET-WEATHER';
+const UPDATE_PLACE = 'UPDATE-PLACE';
+const SET_PLACE = 'SET-PLACE';
+
 
 let initialState = {
     weathers: [],
+    searchPlace: '',
+    place: '',
     isFetching: true
 }
 
@@ -9,7 +14,7 @@ const weatherReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_WEATHER: {
             let timeNow = Math.floor(Date.now() / 1000) + (3 * 60 * 60),
-                timeTomorrow = timeNow + (3 * 24 * 60 * 60),
+                timeTomorrow = timeNow + (2 * 24 * 60 * 60),
                 filterDataByTime = action.weatherItems.filter(item =>
                     item.dt >= timeNow && item.dt <= timeTomorrow && (/.+/gi).test(item.dt_txt)
                 ),
@@ -42,10 +47,21 @@ const weatherReducer = (state = initialState, action) => {
                     arrDays.push(item);
                 }
             })
-            console.log(dataByDays)
             return {
                 ...state,
                 weathers: [...dataByDays]
+            };
+        }
+        case UPDATE_PLACE: {
+            return {
+                ...state,
+                searchPlace: action.searchPlace
+            };
+        }
+        case SET_PLACE : {
+            return {
+                ...state,
+                place: action.place
             };
         }
         default: {
@@ -55,5 +71,7 @@ const weatherReducer = (state = initialState, action) => {
 }
 
 export let setWeather = (weatherItems) => ({ type: SET_WEATHER, weatherItems });
+export let updatePlace = (searchPlace) => ({ type: UPDATE_PLACE, searchPlace });
+export let setPlace = (place) => ({ type: SET_PLACE, place });
 
 export default weatherReducer;
