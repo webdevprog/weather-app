@@ -1,0 +1,44 @@
+$width-preloader: 280px;
+$height-preloader: 280px;
+$border-preloader: 5px;
+
+.wrapper-preloader {
+    text-align: center;
+}
+
+.lds-ripple {
+    display: inline-block;
+    position: relative;
+    width: $width-preloader;
+    height: $height-preloader;
+}
+
+.lds-ripple div {
+    position: absolute;
+    border: $border-preloader solid #fff;
+    opacity: 1;
+    border-radius: 50%;
+    animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+.lds-ripple div:nth-child(2) {
+    animation-delay: -0.5s;
+}
+
+@keyframes lds-ripple {
+    0% {
+        top: ($height-preloader / 2) - $border-preloader;
+        left: ($width-preloader / 2) - $border-preloader;
+        width: 0;
+        height: 0;
+        opacity: 1;
+    }
+
+    100% {
+        top: 0px;
+        left: 0px;
+        width: $width-preloader - $border-preloader * 2;
+        height: $height-preloader - $border-preloader * 2;
+        opacity: 0;
+    }
+}

@@ -3,18 +3,21 @@ import React from 'react';
 import { connect } from "react-redux";
 import { setWeather } from "../../redux/weather-reducer"
 import WeatherDays from './WeatherDays';
+import Preloader from '../common/Preloader/Preloader';
 
 
 
 class WeatherDaysConatainer extends React.Component {
     render() {
         return (
-            <>
-                {this.props.weathers.length ?
-                    <WeatherDays weathers={this.props.weathers} place={this.props.place} />
-                    : 'Такого места не найдено: ' + this.props.place
+            <div className="weather-day">
+                {this.props.isFetching  ?
+                    <Preloader /> :
+                    this.props.weathers.length ?
+                        <WeatherDays weathers={this.props.weathers} place={this.props.place} />
+                        : !this.props.place ? 'Введите в поле поиска город' : 'Такого места не найдено: ' + this.props.place
                 }
-            </>
+            </div>
 
         );
     }

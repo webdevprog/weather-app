@@ -19,7 +19,7 @@ const WeatherDays = (props) => {
             <Col lg="12">
                 {
                     props.weathers.map((item, index) => (
-                        <Row className="weather-day">
+                        <Row>
                             <Col lg="12">
                                 <div className="weather-day__name">{item[index].weekDay}</div>
                                 <div className="weather-day__date">{item[index].date}</div>

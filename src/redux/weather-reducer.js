@@ -1,13 +1,14 @@
 const SET_WEATHER = 'SET-WEATHER';
 const UPDATE_PLACE = 'UPDATE-PLACE';
 const SET_PLACE = 'SET-PLACE';
+const TOGGLE_FETCHING = 'TOGGLE-FETCHING';
 
 
 let initialState = {
     weathers: [],
     searchPlace: '',
     place: '',
-    isFetching: true
+    isFetching: false
 }
 
 const weatherReducer = (state = initialState, action) => {
@@ -64,6 +65,12 @@ const weatherReducer = (state = initialState, action) => {
                 place: action.place
             };
         }
+        case TOGGLE_FETCHING : {
+            return {
+                ...state,
+                isFetching: !action.fetching
+            };
+        }
         default: {
             return state;
         }
@@ -73,5 +80,7 @@ const weatherReducer = (state = initialState, action) => {
 export let setWeather = (weatherItems) => ({ type: SET_WEATHER, weatherItems });
 export let updatePlace = (searchPlace) => ({ type: UPDATE_PLACE, searchPlace });
 export let setPlace = (place) => ({ type: SET_PLACE, place });
+export let toggleFetching = (fetching) => ({ type: TOGGLE_FETCHING, fetching });
+
 
 export default weatherReducer;
