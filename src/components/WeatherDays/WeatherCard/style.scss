@@ -1,0 +1,28 @@
+.weather-card {
+    position: relative;
+    background-color: #423838;
+    color: #fff;
+    border-radius: 10px 0 10px 10px;
+    padding: 10px 20px;
+    text-align: center;
+    margin-top: 25px;
+    &__time {
+        font-size: 16px;
+        font-weight: 600;
+        position: absolute;
+        width: 100px;
+        text-align: center;
+        height: 25px;
+        top: -25px;
+        right: 0;
+        background-color: #423838;
+        border-radius: 10px 10px 0 0;
+    }
+    &__temp {
+        font-size: 30px;
+    }
+    &__image {
+        width: 100%;
+        max-width: 100px;
+    }
+}

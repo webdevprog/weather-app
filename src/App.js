@@ -1,14 +1,14 @@
 import React from 'react';
 import './App.scss';
 import { Container } from 'react-bootstrap';
-import CardWeather from './components/CardWeather/CardWeather';
+import WeatherDaysConatainer from './components/WeatherDays/WeatherDaysConatainer';
 
 function App() {
   return (
 
     <div className="App">
       <Container>
-        <CardWeather />
+        <WeatherDaysConatainer />
       </Container>
     </div>
   );
