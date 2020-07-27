@@ -7,10 +7,12 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { connect } from "react-redux"
 import * as axios from "axios"
 import { setWeather } from "../../redux/weather-reducer"
+
 import 'swiper/swiper.scss';
 import 'swiper/components/navigation/navigation.scss';
 import 'swiper/components/pagination/pagination.scss';
 import 'swiper/components/scrollbar/scrollbar.scss';
+import './style.scss';
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 
@@ -30,13 +32,15 @@ class WeatherDaysConatainer extends React.Component {
             <div>
                 {
                     this.props.weathers.map((item, index) => (
-                        <Row>
-                            <Col lg="6">{item[index].weekDay}</Col>
-                            <Col lg="6">{item[index].date}</Col>
+                        <Row className="weather-day">
                             <Col lg="12">
-                                <Swiper spaceBetween={10} slidesPerView={4}>
+                                <div className="weather-day__name">{item[index].weekDay}</div>
+                                <div className="weather-day__date">{item[index].date}</div>
+                            </Col>
+                            <Col lg="12">
+                                <Swiper spaceBetween={20} slidesPerView={4} className="weather-days-slider">
                                     {item.map((weather, index) => (
-                                        <SwiperSlide><WeatherCard item={weather} key={index} /></SwiperSlide>
+                                        <SwiperSlide className="weather-days-slider__slide"><WeatherCard item={weather} key={index} /></SwiperSlide>
                                     ))}
                                 </Swiper>
                             </Col>

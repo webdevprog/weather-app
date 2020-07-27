@@ -22,7 +22,7 @@ const WeatherCard = (props) => {
     return (
         <div className="weather-card">
             <div className="weather-card__time">{props.item.dt_txt.replace(formatDate, "$4")}</div>
-            <div className="weather-card__temp">{props.item.main.temp}</div>
+            <div className="weather-card__temp">{Math.floor(props.item.main.temp)} C</div>
             <img className="weather-card__image" src={icon} alt={props.item.weather[0].description} />
             <div className="weather-card__type">{props.item.weather[0].description}</div>
             <div className="weather-card__wind-direction">{directionWind}</div>

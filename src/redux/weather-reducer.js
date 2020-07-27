@@ -20,12 +20,12 @@ const weatherReducer = (state = initialState, action) => {
                 const formatDate = /(\d{4})-(\d{1,2})-(\d{1,2})(.+)/gi;
 
                 let nextItem,
-                    currentDay = items[index].dt_txt.replace(formatDate, "$3 $2 $1");
+                    currentDay = items[index].dt_txt.replace(formatDate, "$3-$2-$1");
 
                 if (items.length - 1 === index) {
-                    nextItem = items[index].dt_txt.replace(formatDate, "$3 $2 $1");
+                    nextItem = items[index].dt_txt.replace(formatDate, "$3-$2-$1");
                 } else {
-                    nextItem = items[index + 1].dt_txt.replace(formatDate, "$3 $2 $1");
+                    nextItem = items[index + 1].dt_txt.replace(formatDate, "$3-$2-$1");
                 }
 
                 item.date = nextItem;
